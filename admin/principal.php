@@ -38,9 +38,10 @@ if(!isset($_SESSION['usuarioValido'])){
 <div class="fondoModal" id="modal1"> <!-- class="fondo" esta relacionado al css, id="modal1" esta relacionado a javascript  -->
 	
 <div class="modalMensajes">
-<h2 class="textoPrincipal">Registro de vehiculos</h2>	
- <a href="#" class="cerrar" onclick="CerrarModal()">Cerrar</a>
-     <form action="" class="">
+
+<h2 class="modalTitulo">Registro de vehiculos</h2>	
+
+     <form action="GuardarVehiculo.php" class="">
       <select name="vehiculo" class="campos">
         <option value="">Toyota</option>
         <option value="">Mazda</option>
@@ -53,7 +54,7 @@ if(!isset($_SESSION['usuarioValido'])){
         <option value="">Camion</option>
       </select>
 
-      <select name="color" class="camposIngreso">
+      <select name="color" class="campos">
         <option value="">Rojo</option>
         <option value="">Mazda</option>
       </select>
@@ -61,7 +62,7 @@ if(!isset($_SESSION['usuarioValido'])){
      </form>
 
 
-    
+     <a href="#" class="" onclick="CerrarModal()">X</a>
     </div>
 
 

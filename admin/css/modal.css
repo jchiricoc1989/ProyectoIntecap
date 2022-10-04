@@ -44,19 +44,29 @@ font-family: segoe ui light;
 }
 
 .cerrar{
-	font-size: 20px;
-	outline: none;
+	 position: absolute;
+       top: 5%;
+       right: 5%;
+       text-decoration: none;
+       color: #fff;
+}
+
+
+.modalTitulo{
+	color:#020940;
+	font-family: "segoe ui light";
+	font-size: 35px;
+	text-align: center;
+	background-color: aqua;
 }
 
 .campos{
 	display: block;/*permite colocar en bloque nuestra etiqueta, traduccion ocupa todo el espacio*/
 	margin: 10px auto;/*40 de espacio arriba y abajo, auto centra horizontal*/
-	width: 40%;/*es para que del 100% ocupe un 40%*/
-	font-size: 15px;/**/
-	border: none;/*elimina los bordes*/
+	width: 300px;/*es para que del 100% ocupe un 40%*/
+	font-size: 20px;/**/
 	border-radius: 10px;/*redondea las 4 esquinas*/
 	text-align: center;/*centra el texto*/
-	padding: 5px;/*le brinda un espaciado*/
 	color: #0075bf;/*color de fuente, es identico al fondo*/
 	outline: none;/*elimina contorno de linea*/
 	background-color: #fff;/*color blanco de fondo*/
