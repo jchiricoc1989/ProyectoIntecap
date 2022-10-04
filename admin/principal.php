@@ -36,13 +36,13 @@ if(!isset($_SESSION['usuarioValido'])){
 </a>
 
 <div class="fondoModal" id="modal1"> <!-- class="fondo" esta relacionado al css, id="modal1" esta relacionado a javascript  -->
-	
+
 <div class="modalMensajes">
+<h3 class="modalTitulo">Registro de vehiculos</h3>	
+<a href="#" class="modalSalir" onclick="CerrarModal()">Cerrar</a>
 
-<h2 class="modalTitulo">Registro de vehiculos</h2>	
-
-     <form action="GuardarVehiculo.php" class="">
-      <select name="vehiculo" class="campos">
+     <form action="GuardarVehiculo.php" method="POST" class="">
+      <select name="marca" class="campos">
         <option value="">Toyota</option>
         <option value="">Mazda</option>
       </select>
@@ -50,19 +50,43 @@ if(!isset($_SESSION['usuarioValido'])){
     <input type="text" name="linea" placeholder="Linea" class="campos">
 
       <select name="tipo" class="campos">
-        <option value="">Moto</option>
-        <option value="">Camion</option>
+        <option value="">Sedan</option>
+        <option value="">Corola</option>
       </select>
 
       <select name="color" class="campos">
-        <option value="">Rojo</option>
-        <option value="">Mazda</option>
+        <option value="">Mecanica</option>
+        <option value="">Automatica</option>
       </select>
+
+      <input type="text" name="modelo" placeholder="Modelo" class="campos">
+
+      <input type="text" name="km" placeholder="KM..." class="campos">
+
+      <select name="traccion" class="campos">
+        <option value="">4X4</option>
+        <option value="">4X2</option>
+      </select>
+
+      <select name="combustible" class="campos">
+        <option value="">Gasolina</option>
+        <option value="">Diese</option>
+      </select>
+
+      <select name="color" class="campos">
+        <option value="">Azul</option>
+        <option value="">rojo</option>
+      </select>
+
+      <input type="text" name="precio" placeholder="Precio.." class="campos">
+      <input type="text" name="anio" placeholder="Años minimo Credito" class="campos">
+      <img class="modalCalculadora" src="img/calculadora.png" alt="">
+      <input type="text" name="mensualidad" placeholder="Mensualidad Recomendada" class="campos">
+      <input type="text" name="CantidadPuertas" placeholder="Cantidad puertas" class="campos">
+      <input type="file" name="img" id="" class="campos">
+      <input type="submit" name="Guardar" value="Guardar" class="campos">
     
      </form>
-
-
-     <a href="#" class="" onclick="CerrarModal()">X</a>
     </div>
 
 

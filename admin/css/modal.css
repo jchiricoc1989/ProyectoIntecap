@@ -20,10 +20,10 @@
 	align-items: center;
 	width: 100%;
 	background: linear-gradient(135deg, rgba(219,126,109,1) 0%, rgba(201,88,69,1) 49%, rgba(183,56,55,1) 100%); 
-	animation:animacionArriba 0.6s;
+	animation:animacionArriba 0.5s;
 	position: relative;
 	margin: 0 auto;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 .modalMensajes{
 	display: block;
@@ -51,13 +51,18 @@ font-family: segoe ui light;
        color: #fff;
 }
 
-
 .modalTitulo{
-	color:#020940;
+	color:#fff;
 	font-family: "segoe ui light";
 	font-size: 35px;
 	text-align: center;
-	background-color: aqua;
+	background-color:#03093B;
+}
+
+.modalCalculadora{
+	display: block;/*permite colocar en bloque nuestra etiqueta, traduccion ocupa todo el espacio*/
+	margin: 10px auto;/*40 de espacio arriba y abajo, auto centra horizontal*/
+	text-align: center;/*centra el texto*/
 }
 
 .campos{
@@ -65,11 +70,22 @@ font-family: segoe ui light;
 	margin: 10px auto;/*40 de espacio arriba y abajo, auto centra horizontal*/
 	width: 300px;/*es para que del 100% ocupe un 40%*/
 	font-size: 20px;/**/
-	border-radius: 10px;/*redondea las 4 esquinas*/
+	border-radius: 5px; /*redondea las 4 esquinas*/
 	text-align: center;/*centra el texto*/
 	color: #0075bf;/*color de fuente, es identico al fondo*/
 	outline: none;/*elimina contorno de linea*/
 	background-color: #fff;/*color blanco de fondo*/
+}
+
+.modalSalir{
+	margin: 10px auto;/*40 de espacio arriba y abajo, auto centra horizontal*/
+	width: 600px;/*es para que del 100% ocupe un 40%*/
+	display: block;
+	text-align:right;
+	outline: none;
+	text-decoration: none;
+	font-size: 25px;
+	
 
 }
 
