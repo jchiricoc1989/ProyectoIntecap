@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </div>
 
 
-<h1>probando git y githun</h1>
+<h1>probando git y githun probando segunda vez</h1>
 </body>
 </html>
 
