@@ -22,6 +22,7 @@ if(!isset($_SESSION['usuarioValido'])){
   <link rel="stylesheet" href="css/bootstrap.min.css">
 
   <script type="text/javascript" src="js/ventanaModal.js"></script>
+
   
 </head>
 <body>
@@ -58,7 +59,14 @@ if(!isset($_SESSION['usuarioValido'])){
      <div class="col-md-4">
       <label for="firstName" class="form-label">Linea</label>
       <input type="text" class="form-control" id="firstName" placeholder="Linea"required> 
+      <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+
      </div>
+
+     
+
 
      <div class="col-md-4">
       <label for="state" class="form-label">Tipo</label>
@@ -127,10 +135,21 @@ if(!isset($_SESSION['usuarioValido'])){
 
      <div class="col-md-3">
       <label for="firstName" class="form-label">Cantidad Puertas</label>
-      <input type="text" name="cantidad_puertas" class="form-control" id="firstName" placeholder="Cantidad Puertas" required> 
+      <input type="text" name="cantidad_puertas" class="form-control" id="firstName" placeholder="Cantidad Puertas" required=""> 
      </div>
+
+     <div class="col-md-8">
+      <label for="firstName" class="form-label">Imagen</label>
+      <input class="form-control" type="file" name="img" id="formFile">
+    </div>
+
+    <div class="col-md-2">
+    <label for="firstName" class="form-label">Calcular</label>
+      <button class="form-control" type="button"><img  src="img/calculadora.png" alt=""></button>
+    </div>
+
+  
       
-      <input type="file" name="img" id="" class="campos">
       <input type="submit" class="btn btn-primary campos" name="Guardar" value="Guardar">
 </div>  
      </form>
