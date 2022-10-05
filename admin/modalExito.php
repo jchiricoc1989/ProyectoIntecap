@@ -5,20 +5,21 @@
 	<link rel="stylesheet" type="text/css" href="css/modal.css">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>
 <body>
+	<main class="container">
+ 
+	<button class="btn btn-success" data-toggle="modal" data-target="#ventanaModal">
+  ventana modal
+</button>
 
-<div class="fondoModal" id="notificacion">
-	<div class="modalMensajes">
-		<h2 class="textosNotificacion">Exito</h2>
-		<p class="descripcion">Acción realizada satisfactoriamente</p>
-		<p class="descripcion">Proceda a iniciar sesión</p>
+	</main>
 
-		<a class="btnAceptarNotificacion" href="index.php">Aceptar</a>
-	</div>
 
-</div>
-
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
 </body>
 </html>

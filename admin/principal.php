@@ -19,7 +19,10 @@ if(!isset($_SESSION['usuarioValido'])){
 	<title>Galería vehiculos</title>
 	<link rel="stylesheet" type="text/css" href="css/vehiculo.css">
   <link rel="stylesheet" type="text/css" href="css/modal.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
   <script type="text/javascript" src="js/ventanaModal.js"></script>
+  
 </head>
 <body>
 
@@ -41,51 +44,95 @@ if(!isset($_SESSION['usuarioValido'])){
 <h3 class="modalTitulo">Registro de vehiculos</h3>	
 <a href="#" class="modalSalir" onclick="CerrarModal()">Cerrar</a>
 
-     <form action="GuardarVehiculo.php" method="POST" class="">
-      <select name="marca" class="campos">
+     <form action="GuardarVehiculo.php" method="POST" class="needs-validation" novalidate>
+<div class="row g-3">
+
+     <div class="col-md-4">
+      <label for="state" class="form-label">Marca</label>
+      <select class="form-select" name="" id="state">
         <option value="">Toyota</option>
         <option value="">Mazda</option>
       </select>
+     </div>
 
-    <input type="text" name="linea" placeholder="Linea" class="campos">
+     <div class="col-md-4">
+      <label for="firstName" class="form-label">Linea</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Linea"required> 
+     </div>
 
-      <select name="tipo" class="campos">
-        <option value="">Sedan</option>
+     <div class="col-md-4">
+      <label for="state" class="form-label">Tipo</label>
+      <select class="form-select" name="tipo" id="state">
+      <option value="">Sedan</option>
         <option value="">Corola</option>
       </select>
+     </div>
 
-      <select name="color" class="campos">
-        <option value="">Mecanica</option>
-        <option value="">Automatica</option>
+     <div class="col-md-4">
+      <label for="state" class="form-label">Transmisión</label>nsmisión
+      <select class="form-select" name="traccion" id="state">
+      <option value="">automatica</option>
+      <option value="">mecanica</option>
       </select>
+     </div>
 
-      <input type="text" name="modelo" placeholder="Modelo" class="campos">
+     <div class="col-md-4">
+      <label for="firstName" class="form-label">Modelo</label>
+      <input type="text" name="modelo" class="form-control" id="firstName" placeholder="Modelo" required> 
+     </div>
 
-      <input type="text" name="km" placeholder="KM..." class="campos">
+     <div class="col-md-4">
+      <label for="firstName" class="form-label">KM</label>
+      <input type="text" name="km" class="form-control" id="firstName" placeholder="KM..." required> 
+     </div>
 
-      <select name="traccion" class="campos">
-        <option value="">4X4</option>
-        <option value="">4X2</option>
+     <div class="col-md-4">
+      <label for="state" class="form-label">Tracción</label>
+      <select class="form-select" name="traccion" id="state">
+      <option value="">4X2</option>
+      <option value="">4X4</option>
       </select>
+     </div>
 
-      <select name="combustible" class="campos">
-        <option value="">Gasolina</option>
-        <option value="">Diese</option>
+     <div class="col-md-4">
+      <label for="state" class="form-label">Combustible</label>
+      <select class="form-select" name="color" id="state">
+      <option value="">Gasolina</option>
+      <option value="">Diesel</option>
       </select>
+     </div>
 
-      <select name="color" class="campos">
-        <option value="">Azul</option>
-        <option value="">rojo</option>
+     <div class="col-md-4">
+      <label for="state" class="form-label">Color</label>
+      <select class="form-select" name="color" id="state">
+      <option value="">Rojo</option>
+      <option value="">Azul</option>
       </select>
+     </div>
 
-      <input type="text" name="precio" placeholder="Precio.." class="campos">
-      <input type="text" name="anio" placeholder="Años minimo Credito" class="campos">
-      <img class="modalCalculadora" src="img/calculadora.png" alt="">
-      <input type="text" name="mensualidad" placeholder="Mensualidad Recomendada" class="campos">
-      <input type="text" name="CantidadPuertas" placeholder="Cantidad puertas" class="campos">
+     <div class="col-md-3">
+      <label for="firstName" class="form-label">Precio</label>
+      <input type="text" name="precio" class="form-control" id="firstName" placeholder="Precio" required> 
+     </div>
+
+     <div class="col-md-3">
+      <label for="firstName" class="form-label">Años Credito</label>
+      <input type="text" name="aniosMinimoCredito" class="form-control" id="firstName" placeholder="Años credito" required> 
+     </div>
+
+     <div class="col-md-3">
+      <label for="firstName" class="form-label">Mensualidad</label>
+      <input type="text" name="mensualidadAprox" class="form-control" id="firstName" placeholder="Mensualidad" required> 
+     </div>
+
+     <div class="col-md-3">
+      <label for="firstName" class="form-label">Cantidad Puertas</label>
+      <input type="text" name="cantidad_puertas" class="form-control" id="firstName" placeholder="Cantidad Puertas" required> 
+     </div>
+      
       <input type="file" name="img" id="" class="campos">
-      <input type="submit" name="Guardar" value="Guardar" class="campos">
-    
+      <input type="submit" class="btn btn-primary campos" name="Guardar" value="Guardar">
+</div>  
      </form>
     </div>
 
@@ -106,7 +153,6 @@ if(!isset($_SESSION['usuarioValido'])){
 <h2>Bienvenido: 
   <?php echo $_SESSION['nombreCompleto']; ?>
 </h2>
-
 
 
 </body>
