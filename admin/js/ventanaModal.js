@@ -7,3 +7,8 @@ function mostrarModal(){
 function CerrarModal(){
     document.getElementById('modal1').style.display='none';
 }
+
+// metodo para calcular datos en vehiculos
+function Calcular(){
+    
+}
