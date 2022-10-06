@@ -46,7 +46,7 @@ if (!isset($_SESSION['usuarioValido'])) {
         <h3 class="modalTitulo">Registro de vehiculos</h3>
         <a href="#" class="modalSalir" onclick="CerrarModal()">Cerrar</a>
 
-        <form action="GuardarVehiculo.php" method="POST" >
+        <form action="GuardarVehiculo.php" name="enviar" method="POST" >
           <div class="row g-3">
             <div class="col-md-4">
               <label for="state" class="form-label">Marca</label>
@@ -155,12 +155,13 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-2">
               <label for="firstName" class="form-label">Precio</label>
-              <input type="text" name="precio" class="form-control" id="#precio" placeholder="Precio" required>
+              <input type="text" name="precio" class="form-control" id="precio" placeholder="Precio" required>
             </div>
 
             <div class="col-md-2">
               <label for="state" class="form-label">Años</label>
-              <select class="form-select" name="anios"  id="#anios">
+              <select class="form-select" name="anios" onchange="CalcularMeses()"  id="anios">
+               <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -187,21 +188,27 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-3">
               <label for="firstName" class="form-label">Meses Credito</label>
-              <input type="text" name="aniosMinimoCredito" class="form-control" id="#aniosMinimoCredito" placeholder="Meses" required>
+              <input type="text" name="aniosMinimoCredito" class="form-control" id="aniosMinimoCredito" readonly placeholder="Meses" required>
             </div>
 
            
 
             <div class="col-md-3">
               <label for="firstName" class="form-label">Mensualidad</label>
-              <input type="text" name="mensualidadAprox" class="form-control" id="#mensualidadAprox" placeholder="Mensualidad" required>
+              <input type="text" name="mensualidadAprox" class="form-control" id="mensualidadAprox" readonly placeholder="Mensualidad" required>
             </div>
 
             <div class="col-md-2">
               <label for="firstName" class="form-label">Cant. Puertas</label>
               <input type="text" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" required="">
             </div>
-
+            <div class="col-md-12">
+                
+              <strong><em id="interes"></em></strong>
+              <strong><em id="interesVehiculo"></em></strong>
+              <strong><em id="sumaTotal"></em></strong>
+            </div>
+            
             <div class="col-md-8">
               <label for="firstName" class="form-label">Imagen</label>
               <input class="form-control" type="file" name="img" id="formFile">
