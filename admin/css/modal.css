@@ -27,89 +27,29 @@
 }
 .modalMensajes{
 	display: block;
-	width: 45%;
+	width: 70%;
 	background: #fff;
 	overflow: hidden;
+	padding: 5px;
 }
-.textosNotificacion,.textoNotificacionError{
-	text-align: center;
-    background-color: #2ECC71;
-    color: #fff;
-    font-family: segoe ui light;
-    padding: 20px;
-}
-.descripcion{
-	padding: 30px 30px 0 30px;
-font-family: segoe ui light;
-}
-
-.cerrar{
-	 position: absolute;
-       top: 5%;
-       right: 5%;
-       text-decoration: none;
-       color: #fff;
-}
-
 .modalTitulo{
 	color:#fff;
 	font-family: "segoe ui light";
 	font-size: 35px;
 	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 5px;
 	background-color:#03093B;
 }
-
-.modalCalculadora{
-	display: block;/*permite colocar en bloque nuestra etiqueta, traduccion ocupa todo el espacio*/
-	margin: 10px auto;/*40 de espacio arriba y abajo, auto centra horizontal*/
-	text-align: center;/*centra el texto*/
-}
-
-.campos{
-	display: block;/*permite colocar en bloque nuestra etiqueta, traduccion ocupa todo el espacio*/
-	margin: 10px auto;/*40 de espacio arriba y abajo, auto centra horizontal*/
-	width: 300px;/*es para que del 100% ocupe un 40%*/
-	font-size: 20px;/**/
-	border-radius: 5px; /*redondea las 4 esquinas*/
-	text-align: center;/*centra el texto*/
-	color: #0075bf;/*color de fuente, es identico al fondo*/
-	outline: none;/*elimina contorno de linea*/
-	background-color: #fff;/*color blanco de fondo*/
-}
-
-.modalSalir{
-	margin: 10px auto;/*40 de espacio arriba y abajo, auto centra horizontal*/
-	width: 600px;/*es para que del 100% ocupe un 40%*/
-	display: block;
-	text-align:right;
-	outline: none;
-	text-decoration: none;
-	font-size: 25px;
-	
-
-}
-
-.btnIniciar{
-	padding: 10px;/*agregmos espaciado*/
-	margin: 0 auto;/*centramos el boton*/
-	display: block;/*permite colocar en bloque nuestra etiqueta*/
-	background-color: initial;/*reiniciamos el color de fondo*/
-	border: none;/*eliminamos bordes*/
-	color: #fff;/*color blanco para cambiar el contorno de nuestro icono*/
-}
-
-.btnAceptarNotificacion{
-	text-decoration: none;
-	   background-color: green;
-    background-color: #2ECC71;
-    color: #fff;
-    padding: 20px 40px;
-    border-radius: 50px;
-    display: inline-block;
-    margin: 15px;
-    float: right;
-    font-family: segoe ui light;
-font-weight: bold;
+.modalTitulo label{
+	padding-top: 10px;
+	adding-bottom: 5px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #fff;
+	font-size: 15px;
+	cursor: pointer;
 }
 
 @keyframes animacionArriba{

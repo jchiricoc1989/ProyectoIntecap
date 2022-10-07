@@ -43,14 +43,17 @@ if (!isset($_SESSION['usuarioValido'])) {
       <!-- class="fondo" esta relacionado al css, id="modal1" esta relacionado a javascript  -->
 
       <div class="modalMensajes">
-        <h3 class="modalTitulo">Registro de vehiculos</h3>
-        <a href="#" class="modalSalir" onclick="CerrarModal()">Cerrar</a>
-
-        <form action="GuardarVehiculo.php" name="enviar" method="POST" >
+        <div class="modalTitulo">
+        <h3>Registro de vehiculos</h3>
+        <label for="" onclick="CerrarModal()">&times;</label>
+       
+        </div>
+      
+        <form action="GuardarVehiculo.php" enctype="multipart/form-data" name="enviar" method="POST" >
           <div class="row g-3">
             <div class="col-md-4">
               <label for="state" class="form-label">Marca</label>
-              <select class="form-select" name="marca" id="state">
+              <select class="form-select" name="marca" id="marca">
                 <?php
                 $sql = "SELECT * FROM marcas";
                 $resultado = mysqli_query($conexion, $sql);
@@ -65,12 +68,12 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="firstName" class="form-label">Linea</label>
-              <input type="text" name="linea" class="form-control" id="firstName" placeholder="Linea" required>
+              <input type="text" name="linea" class="form-control" id="linea" placeholder="Linea" required>
             </div>
 
             <div class="col-md-4">
               <label for="state" class="form-label">Tipo</label>
-              <select class="form-select" name="tipo" id="state">
+              <select class="form-select" name="tipo" id="tipo">
               <?php
                 $sql = "SELECT * FROM tipo_vehiculo";
                 $resultado = mysqli_query($conexion, $sql);
@@ -85,7 +88,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="state" class="form-label">Transmisión</label>nsmisión
-              <select class="form-select" name="transmision" id="state">
+              <select class="form-select" name="transmision" id="transmision">
               <?php
                 $sql = "SELECT * FROM transmision";
                 $resultado = mysqli_query($conexion, $sql);
@@ -100,17 +103,17 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="firstName" class="form-label">Modelo</label>
-              <input type="text" name="modelo" class="form-control" id="firstName" placeholder="Modelo" required>
+              <input type="text" name="modelo" class="form-control" id="modelo" placeholder="Modelo" required>
             </div>
 
             <div class="col-md-4">
               <label for="firstName" class="form-label">KM</label>
-              <input type="text" name="km" class="form-control" id="firstName" placeholder="KM..." required>
+              <input type="text" name="km" class="form-control" id="km" placeholder="KM..." required>
             </div>
 
             <div class="col-md-4">
               <label for="state" class="form-label">Tracción</label>
-              <select class="form-select" name="traccion" id="state">
+              <select class="form-select" name="traccion" id="traccion">
               <?php
                 $sql = "SELECT * FROM traccion";
                 $resultado = mysqli_query($conexion, $sql);
@@ -125,7 +128,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="state" class="form-label">Combustible</label>
-              <select class="form-select" name="combustible" id="state">
+              <select class="form-select" name="combustible" id="combustible">
               <?php
                 $sql = "SELECT * FROM combustible";
                 $resultado = mysqli_query($conexion, $sql);
@@ -140,7 +143,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="state" class="form-label">Color</label>
-              <select class="form-select" name="color" id="state">
+              <select class="form-select" name="color" id="color">
               <?php
                 $sql = "SELECT * FROM colores";
                 $resultado = mysqli_query($conexion, $sql);
@@ -211,22 +214,22 @@ if (!isset($_SESSION['usuarioValido'])) {
             
             <div class="col-md-8">
               <label for="firstName" class="form-label">Imagen</label>
-              <input class="form-control" type="file" name="img" id="formFile">
+              <input class="form-control" type="file" name="img[]" multiple="" id="formFile">
             </div>
 
             <div class="col-md-2">
               <label for="firstName" class="form-label">Calcular</label>
               <button class="form-control" type="button" onclick="Calcular()"><img src="img/calculadora.png" alt=""></button>
             </div>
-            <input type="submit" class="btn btn-primary campos" name="Guardar" value="Guardar">
+
+           
+            <div class="col-md-6">
+            <input type="submit" class="btn btn-primary" name="Guardar" value="Guardar">
+            <button class="btn btn-success" type="button" onclick="CerrarModal()">Salir</button>
+            </div>
           </div>
         </form>
       </div>
-
-
-
-
-
     </div>
 
 

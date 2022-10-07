@@ -1,11 +1,15 @@
 //funcion para mostrar la ventana modal
 function mostrarModal(){
+    limpiar();
     document.getElementById('modal1').style.display='flex';
+   
+   
 }
 
 //funcion para cerrar la ventana modal en este caso para cerrar modal tenemos que afectar al mismo id de la ventana modal
 function CerrarModal(){
-    document.getElementById('modal1').style.display='none';
+   
+    document.getElementById('modal1').style.display='none';    
 }
 
 // metodo para calcular los años en meses y colocarlos en el input
@@ -52,4 +56,26 @@ function Calcular(){
     var mensualidad = precioFinal / meses;
     document.enviar.mensualidadAprox.value = mensualidad.toFixed(2);
  
+}
+
+function limpiar(){
+    document.getElementById("marca").value = "";
+    document.getElementById("linea").value = "";
+    document.getElementById("tipo").value = "";
+    document.getElementById("transmision").value = "";
+    document.getElementById("modelo").value = "";
+    document.getElementById("km").value = "";
+    document.getElementById("traccion").value = "";
+    document.getElementById("combustible").value = "";
+    document.getElementById("color").value = "";
+    document.getElementById("precio").value = "";
+    document.getElementById("anios").value="";
+    document.getElementById("aniosMinimoCredito").value="";
+    document.getElementById("mensualidadAprox").value="";
+    document.getElementById("cantidad_puertas").value="";
+    document.getElementById('interes').innerHTML="";
+    document.getElementById('interesVehiculo').innerHTML="";
+    document.getElementById('sumaTotal').innerHTML="";
+
+    
 }
