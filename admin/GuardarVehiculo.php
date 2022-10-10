@@ -26,9 +26,9 @@ $cantidad_puertas= $_POST['cantidad_puertas'];
 $sql = "INSERT INTO vehiculos VALUE(null, '$marca','$linea','$tipo','$transmision','$modelo','$km','$traccion','$combustible','$color','$precio','$aniosMinimoCredito','$mensualidadAprox','$cantidad_puertas')";
 //print_r($sql);
 
-$respuesta = mysqli_query($conexion, $sql);
+mysqli_query($conexion, $sql);
+$ultimoCodigoInsertado = mysqli_insert_id($conexion);
 
-if($respuesta == 1){
  // -------------------------ingresando las imagenes ----------------------------
 //verificando el indice o espacio FILES
 //por medio de nuestro ciclo FOREACH.
@@ -54,14 +54,15 @@ foreach ($_FILES["img"]["tmp_name"] as $key => $tmp_name) {
 	//construyendo la ruta nueva (final) de imagen....
 	$ubicacionFinal=$directorio.$nombreImagen;
 
-    $sql = "INSERT INTO fotos_autos VALUES(null, '$ubicacionFinal')";
-    mysqli_query($conexion, $sql);
-    header("Location: index.php");
+    
+   // header("Location: index.php");
 
 
 	//movemos la foto al servidor
 	if (move_uploaded_file($ubicacion, $ubicacionFinal)) {
-		echo "Se traslado con exito";
+		$sql = "INSERT INTO fotos_autos VALUES(null,'$ultimoCodigoInsertado','$ubicacionFinal')";
+   		mysqli_query($conexion, $sql);
+		
 	}else{
 		echo "ERROR, INTENTE DE NUEVO";
 	}
@@ -69,11 +70,6 @@ foreach ($_FILES["img"]["tmp_name"] as $key => $tmp_name) {
 	//cerrar carpeta...
 	closedir($dir);
 }
-
-}
-
-
-
 header("Location: principal.php");
 
 ?>

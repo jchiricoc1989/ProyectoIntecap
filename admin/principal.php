@@ -18,9 +18,16 @@ if (!isset($_SESSION['usuarioValido'])) {
   <title>Galería vehiculos</title>
   <link rel="stylesheet" type="text/css" href="css/vehiculo.css">
   <link rel="stylesheet" type="text/css" href="css/modal.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrapa.min.css">
 
-  <script type="text/javascript" src="js/ventanaModal.js"></script>
+  <!--
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+-->
+
+
+  
 
 
 </head>
@@ -53,7 +60,7 @@ if (!isset($_SESSION['usuarioValido'])) {
           <div class="row g-3">
             <div class="col-md-4">
               <label for="state" class="form-label">Marca</label>
-              <select class="form-select" name="marca" id="marca">
+              <select class="form-select" name="marca" id="marca" required>
                 <?php
                 $sql = "SELECT * FROM marcas";
                 $resultado = mysqli_query($conexion, $sql);
@@ -73,7 +80,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="state" class="form-label">Tipo</label>
-              <select class="form-select" name="tipo" id="tipo">
+              <select class="form-select" name="tipo" id="tipo" required>
               <?php
                 $sql = "SELECT * FROM tipo_vehiculo";
                 $resultado = mysqli_query($conexion, $sql);
@@ -87,8 +94,8 @@ if (!isset($_SESSION['usuarioValido'])) {
             </div>
 
             <div class="col-md-4">
-              <label for="state" class="form-label">Transmisión</label>nsmisión
-              <select class="form-select" name="transmision" id="transmision">
+              <label for="state" class="form-label">Transmisión</label>
+              <select class="form-select" name="transmision" id="transmision" required>
               <?php
                 $sql = "SELECT * FROM transmision";
                 $resultado = mysqli_query($conexion, $sql);
@@ -113,7 +120,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="state" class="form-label">Tracción</label>
-              <select class="form-select" name="traccion" id="traccion">
+              <select class="form-select" name="traccion" id="traccion" required>
               <?php
                 $sql = "SELECT * FROM traccion";
                 $resultado = mysqli_query($conexion, $sql);
@@ -128,7 +135,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="state" class="form-label">Combustible</label>
-              <select class="form-select" name="combustible" id="combustible">
+              <select class="form-select" name="combustible" id="combustible" required>
               <?php
                 $sql = "SELECT * FROM combustible";
                 $resultado = mysqli_query($conexion, $sql);
@@ -143,7 +150,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="state" class="form-label">Color</label>
-              <select class="form-select" name="color" id="color">
+              <select class="form-select" name="color" id="color" required>
               <?php
                 $sql = "SELECT * FROM colores";
                 $resultado = mysqli_query($conexion, $sql);
@@ -203,7 +210,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-2">
               <label for="firstName" class="form-label">Cant. Puertas</label>
-              <input type="text" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" required="">
+              <input type="text" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" required>
             </div>
             <div class="col-md-12">
                 
@@ -214,7 +221,7 @@ if (!isset($_SESSION['usuarioValido'])) {
             
             <div class="col-md-8">
               <label for="firstName" class="form-label">Imagen</label>
-              <input class="form-control" type="file" name="img[]" multiple="" id="formFile">
+              <input class="form-control" type="file" name="img[]" multiple="" id="formFile" required>
             </div>
 
             <div class="col-md-2">
@@ -243,8 +250,102 @@ if (!isset($_SESSION['usuarioValido'])) {
   <h2>Bienvenido:
     <?php echo $_SESSION['nombreCompleto']; ?>
   </h2>
+<hr>
+<!------ datos de la tabla --------------->
 
 
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Opciones</th>
+                <th>Marca</th>
+                <th>Linea</th>
+                <th>tipo_vehiculo</th>
+                <th>Modelo</th>
+                <th>Transmisión</th>
+                <th>Combustible</th>
+                <th>Color</th>
+                <th>Cant. Puertas</th>
+            </tr>
+           
+        </thead>
+        <tbody>
+        <?php
+          $sql = "SELECT v.correlativo as correlativo, m.marca as marca, v.linea as linea, tp.tipo as tipo, v.modelo as modelo, t.transmision as transmision, com.combustible as combustible, c.color as color, v.cantidad_puertas as  	cantidad_puertas
+          FROM vehiculos AS v, marcas AS m, tipo_vehiculo AS tp, transmision AS t, combustible AS com, colores AS c
+          WHERE
+          v.marca = m.id_marcar AND
+          v.tipo = tp.id_tipo AND
+          v.transmision = t.id_transmicion AND
+          v.combustible = com.id_combustible AND
+          v.color = c.id_color";
+          $resultado = mysqli_query($conexion, $sql);
+          while($res = mysqli_fetch_array($resultado)){
+          ?>
+            <tr>
+              <th><a href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a> --
+              <a href='actualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png" onclick="return actualizarVehiculo()"></a>
+                <td><?php echo $res['marca']; ?></td>
+                <td><?php echo $res['linea']; ?></td>
+                <td><?php echo $res['tipo']; ?></td>
+                <td><?php echo $res['modelo']; ?></td>
+                <td><?php echo $res['transmision']; ?></td>
+                <td><?php echo $res['combustible']; ?></td>
+                <td><?php echo $res['color']; ?></td>
+                <td><?php echo $res['cantidad_puertas']; ?></td>
+            </tr> 
+            <?php
+          }
+          ?>  
+        </tfoot>
+    </table>
+    <hr>
+    <footer class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: #2980b9;">
+    © 2020 Copyright:
+    <a class="text-dark" href="#">Jeremías Iván Chiricoc Martínez</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+
+
+  <script type="text/javascript" src="js/ventanaModal.js"></script>
+  <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/dataTables.bootstrap5.min.js"></script>
+
+ <!--
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  -->
+  <script type="text/javascript">
+    function elminarVehiculo(){
+      var respuesta = confirm("Estas seguro que deseas eliminar el vehiculo");
+      if(respuesta == true){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    function actualizarVehiculo(){
+      var respuesta = confirm("Estas seguro que deseas actualizar el vehiculo");
+      if(respuesta == true){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+              
+    $(document).ready(function () {
+    $('#example').DataTable();
+});
+  </script>
 </body>
 
 </html>
