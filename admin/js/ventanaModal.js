@@ -11,7 +11,6 @@ function CerrarModal(){
    
     document.getElementById('modal1').style.display='none';    
 }
-
 // metodo para calcular los años en meses y colocarlos en el input
 function CalcularMeses(){
     var anio = document.getElementById('anios').value;

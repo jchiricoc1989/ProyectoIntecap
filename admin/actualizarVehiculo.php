@@ -15,7 +15,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 <html>
 
 <head>
-  <title>Galería vehiculos</title>
+  <title>Actualizacion de Vehiculos</title>
   <link rel="stylesheet" type="text/css" href="css/vehiculo.css">
   <link rel="stylesheet" type="text/css" href="css/modal.css">
   <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap5.min.css">
@@ -33,29 +33,53 @@ if (!isset($_SESSION['usuarioValido'])) {
 </head>
 
 <body>
-
-
-  <div class="encabezado">
+<div class="encabezado">
     <img class="icoPrincipal" src="img/logo-intecap.png">
 
-    <h2 class="textoPrincipal">Galería de vehiculos</h2>
-
-    <a href="#" onclick="mostrarModal()">
+    <h2 class="textoPrincipal">Actualización de vehiculo</h2>
+    <a href="CerrarSesion.php">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 btnMenu">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
       </svg>
     </a>
 
-    <div class="fondoModal" id="modal1">
-      <!-- class="fondo" esta relacionado al css, id="modal1" esta relacionado a javascript  -->
+  </div>
+  <h4>Bienvenido:
+    <?php echo $_SESSION['nombreCompleto']; ?>
+  </h4>
+<hr>
+  
+<div class="container">
 
-      <div class="modalMensajes">
-        <div class="modalTitulo">
-        <h3>Registro de vehiculos</h3>
-        <label for="" onclick="CerrarModal()">&times;</label>
-       
-        </div>
-      
+<?php
+$correlativo = $_GET['correlativo'];
+
+$sql = "SELECT v.correlativo,v.linea,v.modelo,v.km,v.precio,v.aniosMinimoCredito,v.mensualidadAprox,v.cantidad_puertas, m.id_marcar,m.marca, 
+tp.id_tipo,tp.tipo,t.id_transmicion,t.transmision,tra.id_traccion,tra.traccion,com.id_combustible,com.combustible,c.id_color,c.color 
+FROM vehiculos AS v, marcas AS m, tipo_vehiculo AS tp, transmision AS t, traccion AS tra, combustible AS com, colores AS c 
+WHERE v.marca = m.id_marcar AND V.tipo = tp.id_tipo AND v.transmision = t.id_transmicion AND v.traccion = tra.id_traccion AND 
+v.combustible = com.id_combustible AND v.color = c.id_color AND v.correlativo = $correlativo";
+
+$resultado = mysqli_query($conexion, $sql);
+
+while($res = mysqli_fetch_assoc($resultado)){
+    $correlativo = $res['correlativo'];
+    //$idmarca = $res['id_marcar'];
+    //$marca = $res['marca'];
+    $linea = $res['linea'];
+    //$idTipoVehiciulo = $res['id_tipo'];
+
+    $modelo = $res['modelo'];
+    $km = $res['km'];
+
+    $precio = $res['precio'];
+    $meses = $res['aniosMinimoCredito'];
+    $mensualidad = $res['mensualidadAprox'];
+    $puertas = $res['cantidad_puertas'];
+
+}
+
+?>
         <form action="GuardarVehiculo.php" enctype="multipart/form-data" name="enviar" method="POST" >
           <div class="row g-3">
             <div class="col-md-4">
@@ -75,9 +99,8 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="firstName" class="form-label">Linea</label>
-              <input type="text" name="linea" class="form-control" id="linea" placeholder="Linea" required>
+              <input type="text" name="linea" class="form-control" id="linea" placeholder="Linea" value="<?php echo $linea; ?>" required>
             </div>
-
             <div class="col-md-4">
               <label for="state" class="form-label">Tipo</label>
               <select class="form-select" name="tipo" id="tipo" required>
@@ -86,7 +109,7 @@ if (!isset($_SESSION['usuarioValido'])) {
                 $resultado = mysqli_query($conexion, $sql);
                 while ($res = mysqli_fetch_assoc($resultado)) {
                 ?>
-                <option value="<?php echo $res['id_tipo'] ?>"><?php echo $res['tipo'] ?></option>
+                <option value="<?php echo $idTipoVehiciulo ?>"><?php echo $res['tipo'] ?></option>
                 <?php
                 }
                 ?>
@@ -110,12 +133,12 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-4">
               <label for="firstName" class="form-label">Modelo</label>
-              <input type="text" name="modelo" class="form-control" id="modelo" placeholder="Modelo" required>
+              <input type="text" name="modelo" class="form-control" id="modelo" placeholder="Modelo" value="<?php echo $modelo; ?>" required>
             </div>
 
             <div class="col-md-4">
               <label for="firstName" class="form-label">KM</label>
-              <input type="text" name="km" class="form-control" id="km" placeholder="KM..." required>
+              <input type="text" name="km" class="form-control" id="km" placeholder="KM..." value="<?php echo $km; ?>" required>
             </div>
 
             <div class="col-md-4">
@@ -165,7 +188,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-2">
               <label for="firstName" class="form-label">Precio</label>
-              <input type="text" name="precio" class="form-control" id="precio" placeholder="Precio" required>
+              <input type="text" name="precio" class="form-control" id="precio" placeholder="Precio" value="<?php echo $precio; ?>" required>
             </div>
 
             <div class="col-md-2">
@@ -198,19 +221,19 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-3">
               <label for="firstName" class="form-label">Meses Credito</label>
-              <input type="text" name="aniosMinimoCredito" class="form-control" id="aniosMinimoCredito" readonly placeholder="Meses" required>
+              <input type="text" name="aniosMinimoCredito" class="form-control" id="aniosMinimoCredito" readonly placeholder="Meses" value="<?php echo $meses; ?>" required>
             </div>
 
            
 
             <div class="col-md-3">
               <label for="firstName" class="form-label">Mensualidad</label>
-              <input type="text" name="mensualidadAprox" class="form-control" id="mensualidadAprox" readonly placeholder="Mensualidad" required>
+              <input type="text" name="mensualidadAprox" class="form-control" id="mensualidadAprox" readonly placeholder="Mensualidad" value="<?php echo $mensualidad; ?>" required>
             </div>
 
             <div class="col-md-2">
               <label for="firstName" class="form-label">Cant. Puertas</label>
-              <input type="text" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" required>
+              <input type="text" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" value="<?php echo $puertas; ?>" required>
             </div>
             <div class="col-md-12">
                 
@@ -219,6 +242,27 @@ if (!isset($_SESSION['usuarioValido'])) {
               <strong><em id="sumaTotal"></em></strong>
             </div>
             
+            <?php
+            //$correlativo = $_GET['correlativo'];
+            $imagen = "SELECT * FROM fotos_autos WHERE id_vehiculo = $correlativo";
+            $resultado = mysqli_query($conexion, $imagen);
+
+            while($res = mysqli_fetch_assoc($resultado)){
+                    $ubicacion = $res['ubicacion'];
+            ?>
+              <div class="col-md-3">
+              <picture>
+            <img class="img-thumbnail" alt="..." width="150" height="150" src="<?php echo $ubicacion ?>">
+            </picture>
+              </div>
+          
+            <?php       
+            }
+            ?>
+          
+            
+
+
             <div class="col-md-8">
               <label for="firstName" class="form-label">Imagen</label>
               <input class="form-control" type="file" name="img[]" multiple="" id="formFile" required>
@@ -232,76 +276,14 @@ if (!isset($_SESSION['usuarioValido'])) {
            
             <div class="col-md-6">
             <input type="submit" class="btn btn-primary" name="Guardar" value="Guardar">
-            <button class="btn btn-success" type="button" onclick="CerrarModal()">Salir</button>
+            <button class="btn btn-success" type="button" onclick="Salir()">Salir</button>
             </div>
           </div>
         </form>
-      </div>
-    </div>
-
-
-    <a href="CerrarSesion.php">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 btnMenu">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-      </svg>
-    </a>
-
-  </div>
-  <h2>Bienvenido:
-    <?php echo $_SESSION['nombreCompleto']; ?>
-  </h2>
-<hr>
-<!------ datos de la tabla --------------->
-
-
-
-<table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Opciones</th>
-                <th>Marca</th>
-                <th>Linea</th>
-                <th>tipo_vehiculo</th>
-                <th>Modelo</th>
-                <th>Transmisión</th>
-                <th>Combustible</th>
-                <th>Color</th>
-                <th>Cant. Puertas</th>
-            </tr>
-           
-        </thead>
-        <tbody>
-        <?php
-          $sql = "SELECT v.correlativo as correlativo, m.marca as marca, v.linea as linea, tp.tipo as tipo, v.modelo as modelo, t.transmision as transmision, com.combustible as combustible, c.color as color, v.cantidad_puertas as  	cantidad_puertas
-          FROM vehiculos AS v, marcas AS m, tipo_vehiculo AS tp, transmision AS t, combustible AS com, colores AS c
-          WHERE
-          v.marca = m.id_marcar AND
-          v.tipo = tp.id_tipo AND
-          v.transmision = t.id_transmicion AND
-          v.combustible = com.id_combustible AND
-          v.color = c.id_color";
-          $resultado = mysqli_query($conexion, $sql);
-          while($res = mysqli_fetch_array($resultado)){
-          ?>
-            <tr>
-              <th><a href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a> --
-              <a href='actualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png"></a>
-                <td><?php echo $res['marca']; ?></td>
-                <td><?php echo $res['linea']; ?></td>
-                <td><?php echo $res['tipo']; ?></td>
-                <td><?php echo $res['modelo']; ?></td>
-                <td><?php echo $res['transmision']; ?></td>
-                <td><?php echo $res['combustible']; ?></td>
-                <td><?php echo $res['color']; ?></td>
-                <td><?php echo $res['cantidad_puertas']; ?></td>
-            </tr> 
-            <?php
-          }
-          ?>  
-        </tfoot>
-    </table>
-    <hr>
-    <footer class="bg-light text-center text-lg-start">
+    
+</div>
+<br><br>
+<footer class="bg-light text-center text-lg-start">
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: #2980b9;">
     © 2020 Copyright:
@@ -310,31 +292,14 @@ if (!isset($_SESSION['usuarioValido'])) {
   <!-- Copyright -->
 </footer>
 
-
-
-  <script type="text/javascript" src="js/ventanaModal.js"></script>
+<script type="text/javascript" src="js/ventanaModal.js"></script>
   <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
   <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/dataTables.bootstrap5.min.js"></script>
-
- <!--
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-  -->
-  <script type="text/javascript">
-    function elminarVehiculo(){
-      var respuesta = confirm("Estas seguro que deseas eliminar el vehiculo");
-      if(respuesta == true){
-        return true;
-      }else{
-        return false;
-      }
-    }
-              
-    $(document).ready(function () {
-    $('#example').DataTable();
-});
+  <script>
+    function Salir(){
+    window.location = "principal.php";
+}
   </script>
 </body>
 
