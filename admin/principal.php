@@ -207,13 +207,17 @@ if (!isset($_SESSION['usuarioValido'])) {
               <label for="firstName" class="form-label">Mensualidad</label>
               <input type="text" name="mensualidadAprox" class="form-control" id="mensualidadAprox" readonly placeholder="Mensualidad" required>
             </div>
+            <div class="col-md-2">
+              <label for="firstName" class="form-label">Calcular</label>
+              <img onclick="Calcular()" src="img/calculadora.png" alt="">
+            </div>
 
             <div class="col-md-2">
               <label for="firstName" class="form-label">Cant. Puertas</label>
               <input type="number" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" required>
             </div>
-            <div class="col-md-12">
-                
+
+            <div class="col-md-10">  
               <strong><em id="interes"></em></strong>
               <strong><em id="interesVehiculo"></em></strong>
               <strong><em id="sumaTotal"></em></strong>
@@ -258,7 +262,6 @@ if (!isset($_SESSION['usuarioValido'])) {
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Opciones</th>
                 <th>Marca</th>
                 <th>Linea</th>
                 <th>tipo_vehiculo</th>
@@ -267,6 +270,7 @@ if (!isset($_SESSION['usuarioValido'])) {
                 <th>Combustible</th>
                 <th>Color</th>
                 <th>Cant. Puertas</th>
+                <th>Opciones</th>
             </tr>
            
         </thead>
@@ -284,8 +288,6 @@ if (!isset($_SESSION['usuarioValido'])) {
           while($res = mysqli_fetch_array($resultado)){
           ?>
             <tr>
-              <th><a href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a> --
-              <a href='frmActualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png"></a>
                 <td><?php echo $res['marca']; ?></td>
                 <td><?php echo $res['linea']; ?></td>
                 <td><?php echo $res['tipo']; ?></td>
@@ -294,6 +296,8 @@ if (!isset($_SESSION['usuarioValido'])) {
                 <td><?php echo $res['combustible']; ?></td>
                 <td><?php echo $res['color']; ?></td>
                 <td><?php echo $res['cantidad_puertas']; ?></td>
+                <th>&nbsp;&nbsp;<a href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href='frmActualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png"></a>
             </tr> 
             <?php
           }

@@ -260,11 +260,16 @@ while($res = mysqli_fetch_assoc($resultado)){
             </div>
 
             <div class="col-md-2">
+              <label for="firstName" class="form-label">Calcular</label>
+              <img onclick="Calcular()" src="img/calculadora.png" alt="">
+            </div>
+
+            <div class="col-md-2">
               <label for="firstName" class="form-label">Cant. Puertas</label>
               <input type="number" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" value="<?php echo $puertas; ?>" required>
             </div>
-            <div class="col-md-12">
-                
+
+            <div class="col-md-10">
               <strong><em id="interes"></em></strong>
               <strong><em id="interesVehiculo"></em></strong>
               <strong><em id="sumaTotal"></em></strong>
@@ -282,33 +287,21 @@ while($res = mysqli_fetch_assoc($resultado)){
             ?>
               <div class="col-md-2">
               <picture>
-            <img class="img-thumbnail" alt="..." width="150" height="150" src="<?php echo $ubicacion ?>">
-            <input type="hidden" name="correlativo" value="<?php echo $idImage ?>">
-            <input type="hidden" name="ubicacion" value="<?php echo $ubicacion ?>">
-           
+            <img class="img-thumbnail" alt="..." width="150" height="150" src="<?php echo $ubicacion ?>">           
             </picture>
               </div>
             <?php       
             }
             ?>
-          
-            
-
-
+        <!--
             <div class="col-md-8">
               <label for="firstName" class="form-label">Imagen</label>
               <input class="form-control" type="file" name="img[]" multiple="" id="formFile" required>
             </div>
-
-            <div class="col-md-2">
-              <label for="firstName" class="form-label">Calcular</label>
-              <button class="form-control" type="button" onclick="Calcular()"><img src="img/calculadora.png" alt=""></button>
-            </div>
-
-           
-            <div class="col-md-6">
-            <input type="submit" class="btn btn-primary" name="Guardar" value="Guardar">
-            <button class="btn btn-success" type="button" onclick="Salir()">Salir</button>
+          --> 
+            <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" name="Guardar" value="Actualizar Vehiculo">
+            <button class="btn btn-success" type="button" onclick="Salir()">Cancelar</button>
             </div>
           </div>
         </form>

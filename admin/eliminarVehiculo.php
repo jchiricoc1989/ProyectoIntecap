@@ -7,14 +7,14 @@ if (!isset($_SESSION['usuarioValido'])) {
   die();
 } else {
 
-    $correlativo = $_GET['correlativo'];
+$correlativo = $_GET['correlativo'];
 $sql2 = "DELETE FROM fotos_autos WHERE id_vehiculo = $correlativo";
 mysqli_query($conexion, $sql2);   
 
 
 $sql = "DELETE FROM	vehiculos WHERE correlativo = $correlativo";
 mysqli_query($conexion, $sql);
-//$ultimoCodigoEliminado = mysqli_insert_id($conexion);
+
 
 header("Location: principal.php");
 

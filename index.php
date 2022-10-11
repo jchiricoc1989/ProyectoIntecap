@@ -1,8 +1,13 @@
+<?php
+include 'admin/php/Conexion.php';
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Galería vehiculos</title>
 	<link rel="stylesheet" type="text/css" href="css/vehiculo.css">
+	<link rel="stylesheet" type="text/css" href="admin/css/bootstrap.min.css">
 </head>
 <body>
 <div class="encabezado">
@@ -18,67 +23,30 @@
 </div>
 
 <div class="contenedorI">
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_211158.jpg">
+
+	<?php
+	$sql = "SELECT * FROM fotos_autos limit 2 ";
+	$respuesta = mysqli_query($conexion, $sql);
+	while ($res = mysqli_fetch_assoc($respuesta)){
+		$correlativo = $res['correlativo'];
+		$id_vehiculo = $res['id_vehiculo'];
+		$ubicacion = $res['ubicacion'];
+	?>
+
+	<div class="col-md-8">
+		<table id="example" class="table table-striped table-bordered" style="width:100%">
+
+			
+		</table>
+		<img class="imgCarI" src="admin/<?php echo $ubicacion ?>">
 		<h3>Mazda</h3>
 		<h4>BT-50</h4>
 		<h4>2014</h4>
 
+	<?php	
+	}
+	?>
 	</div>
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_212521.jpg">
-		<h3>Nissan</h3>
-		<h4>Frontier</h4>
-		<h4>2011</h4>
-
-	</div>
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_211158.jpg">
-		<h3>Mazda</h3>
-		<h4>BT-50</h4>
-		<h4>2014</h4>
-
-	</div>
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_212521.jpg">
-		<h3>Nissan</h3>
-		<h4>Frontier</h4>
-		<h4>2011</h4>
-
-	</div>
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_211158.jpg">
-		<h3>Mazda</h3>
-		<h4>BT-50</h4>
-		<h4>2014</h4>
-
-	</div>
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_212521.jpg">
-		<h3>Nissan</h3>
-		<h4>Frontier</h4>
-		<h4>2011</h4>
-
-	</div>
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_211158.jpg">
-		<h3>Mazda</h3>
-		<h4>BT-50</h4>
-		<h4>2014</h4>
-
-	</div>
-	<div>
-		<img class="imgCarI" src="img/IMG_20200212_212521.jpg">
-		<h3>Nissan</h3>
-		<h4>Frontier</h4>
-		<h4>2011</h4>
-
-	</div>
-
-
-</div>
-
-<h1>probando nuevamente en subir documentos y archivos a github</h1>
- 
+</div> 
 </body>
 </html>

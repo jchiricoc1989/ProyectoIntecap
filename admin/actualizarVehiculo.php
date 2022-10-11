@@ -24,8 +24,8 @@ $aniosMinimoCredito	= $_POST['aniosMinimoCredito'];
 $mensualidadAprox= $_POST['mensualidadAprox'];	
 $cantidad_puertas= $_POST['cantidad_puertas'];	
 
-$ubicacion = $_POST['ubicacion'];
-$idImagen =$_POST['correlativo'];
+//$ubicacion = $_POST['ubicacion'];
+//$idImagen =$_POST['correlativo'];
 
 // actualizar el vehiculo
 $sql = "UPDATE vehiculos SET marca = $marca,
@@ -45,6 +45,7 @@ $sql = "UPDATE vehiculos SET marca = $marca,
                             correlativo = $correlativo";
 mysqli_query($conexion, $sql);
 
+/*
 //$ultimoCodigoInsertado = mysqli_insert_id($conexion);
 
 //actualizar las fotos del vehiculo
@@ -95,10 +96,9 @@ foreach ($_FILES["img"]["tmp_name"] as $key => $tmp_name) {
 	//cerrar carpeta...
 	closedir($dir);
 }
- 
+ */
 
-
-echo "Actualizacion correcta";
+header("Location:  principal.php");
 
 
 
