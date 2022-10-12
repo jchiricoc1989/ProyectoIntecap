@@ -12,69 +12,7 @@ include 'admin/php/Conexion.php';
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
     <title>Album example Â· Bootstrap v5.2</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
-
-    
-
-    
-
-<link href="admin/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: none;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
-
-    
+    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
     
@@ -97,16 +35,15 @@ include 'admin/php/Conexion.php';
 	?>
         <div class="col">
           <div class="card shadow-sm">
-          <img src="admin/<?php echo $ubicacion ?>" >
+          <img src="admin/<?php echo $ubicacion ?>" width="300" height="300" >
+          <strong style="font-size:25px;"><?php echo $marca ?></strong>
+          <strong style="font-size:25px;"><?php echo $linea ?></strong>
+          <strong style="font-size:25px;"><?php echo $modelo ?></strong>
 
             <div class="card-body">
-              <p class="card-text"><?php echo $marca ?></p>
-              <p class="card-text"><?php echo $linea?></p>
-              <p class="card-text"><?php echo $modelo?></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="ver.php?correlativo=<?php echo $id_vehiculo ?>">ir</a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                  <a class="btn btn-sm btn-outline-secondary" href="ver.php?correlativo=<?php echo $id_vehiculo ?>">ir</a>
                 </div>
               </div>
             </div>
@@ -116,7 +53,6 @@ include 'admin/php/Conexion.php';
     <?php	
 	}
 	?>
-
     
       </div>
     </div>
@@ -131,3 +67,27 @@ include 'admin/php/Conexion.php';
       
   </body>
 </html>
+
+<?php
+	/*$sql = "SELECT fa.correlativo,fa.id_vehiculo,fa.ubicacion, v.correlativo, v.linea,v.modelo,m.id_marcar, m.marca, 
+	COUNT(fa.id_vehiculo)
+	FROM vehiculos AS v, fotos_autos AS fa, marcas AS m 
+	WHERE fa.id_vehiculo = v.correlativo AND v.marca = m.id_marcar
+	GROUP BY fa.id_vehiculo";
+	$respuesta = mysqli_query($conexion, $sql);
+	while ($res = mysqli_fetch_assoc($respuesta)){
+		$correlativo = $res['correlativo'];
+		$id_vehiculo = $res['id_vehiculo'];
+		$ubicacion = $res['ubicacion'];
+	?>
+
+	<div class="col-md-8">
+		
+		<img class="imgCarI" src="admin/<?php echo $ubicacion ?>">
+		<h3>Mazda</h3>
+		<h4>BT-50</h4>
+		<h4>2014</h4>
+
+	<?php	
+	}*/
+	?>
