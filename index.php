@@ -25,7 +25,11 @@ include 'admin/php/Conexion.php';
 <div class="contenedorI">
 
 	<?php
-	$sql = "SELECT * FROM fotos_autos limit 2 ";
+	$sql = "SELECT fa.correlativo,fa.id_vehiculo,fa.ubicacion, v.correlativo, v.linea,v.modelo,m.id_marcar, m.marca, 
+	COUNT(fa.id_vehiculo)
+	FROM vehiculos AS v, fotos_autos AS fa, marcas AS m 
+	WHERE fa.id_vehiculo = v.correlativo AND v.marca = m.id_marcar
+	GROUP BY fa.id_vehiculo";
 	$respuesta = mysqli_query($conexion, $sql);
 	while ($res = mysqli_fetch_assoc($respuesta)){
 		$correlativo = $res['correlativo'];
@@ -34,10 +38,7 @@ include 'admin/php/Conexion.php';
 	?>
 
 	<div class="col-md-8">
-		<table id="example" class="table table-striped table-bordered" style="width:100%">
-
-			
-		</table>
+		
 		<img class="imgCarI" src="admin/<?php echo $ubicacion ?>">
 		<h3>Mazda</h3>
 		<h4>BT-50</h4>

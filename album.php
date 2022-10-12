@@ -63,7 +63,7 @@ include 'admin/php/Conexion.php';
       }
 
       .nav-scroller .nav {
-        display: flex;
+        display: none;
         flex-wrap: nowrap;
         padding-bottom: 1rem;
         margin-top: -1px;
@@ -83,27 +83,31 @@ include 'admin/php/Conexion.php';
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <?php
-	$sql = "SELECT * FROM fotos_autos ";
+	$sql = "SELECT MIN(fa.id_vehiculo) as id_vehiculo, fa.correlativo,fa.ubicacion,v.linea,v.modelo, v.marca,m.marca,m.id_marcar FROM fotos_autos as fa, vehiculos AS v, marcas AS m 
+  WHERE fa.id_vehiculo = v.correlativo and v.marca = m.id_marcar
+  GROUP BY id_vehiculo";
 	$respuesta = mysqli_query($conexion, $sql);
 	while ($res = mysqli_fetch_assoc($respuesta)){
 		$correlativo = $res['correlativo'];
 		$id_vehiculo = $res['id_vehiculo'];
 		$ubicacion = $res['ubicacion'];
+    $linea = $res['linea'];
+    $modelo = $res['modelo'];
+    $marca = $res['marca'];
 	?>
         <div class="col">
           <div class="card shadow-sm">
           <img src="admin/<?php echo $ubicacion ?>" >
 
             <div class="card-body">
-              <p class="card-text"><?php echo $correlativo ?></p>
-              <p class="card-text"><?php echo $id_vehiculo ?></p>
-              <p class="card-text"><?php echo $ubicacion ?></p>
+              <p class="card-text"><?php echo $marca ?></p>
+              <p class="card-text"><?php echo $linea?></p>
+              <p class="card-text"><?php echo $modelo?></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+                  <a href="ver.php?correlativo=<?php echo $id_vehiculo ?>">ir</a>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                 
                 </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
