@@ -19,8 +19,9 @@ include 'admin/php/Conexion.php';
 <main>
   <div class="album py-5 bg-light">
     <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <?php
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <?php
 	$sql = "SELECT MIN(fa.id_vehiculo) as id_vehiculo, fa.correlativo,fa.ubicacion,v.linea,v.modelo, v.marca,m.marca,m.id_marcar FROM fotos_autos as fa, vehiculos AS v, marcas AS m 
   WHERE fa.id_vehiculo = v.correlativo and v.marca = m.id_marcar
   GROUP BY id_vehiculo";
@@ -33,31 +34,23 @@ include 'admin/php/Conexion.php';
     $modelo = $res['modelo'];
     $marca = $res['marca'];
 	?>
-        <div class="col">
-          <div class="card shadow-sm">
-          <img src="admin/<?php echo $ubicacion ?>" width="300" height="300" >
-          <strong style="font-size:25px;"><?php echo $marca ?></strong>
-          <strong style="font-size:25px;"><?php echo $linea ?></strong>
-          <strong style="font-size:25px;"><?php echo $modelo ?></strong>
+  
 
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a class="btn btn-sm btn-outline-secondary" href="ver.php?correlativo=<?php echo $id_vehiculo ?>">ir</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-    <?php	
+  <div class="card" style="width: 18rem;">
+  <img src="admin/<?php echo $ubicacion ?>" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $marca ?></h5>
+    <h5 class="card-title"><?php echo $linea ?></h5>
+    <h5 class="card-title"><?php echo $modelo ?></h5>
+    <a href="carrousel.php?correlativo=<?php echo $id_vehiculo ?>" class="btn btn-primary">Ver</a>
+  </div>
+</div>
+<?php	
 	}
 	?>
-    
-      </div>
-    </div>
   </div>
-
+  </div>
+  </div>
 </main>
 
 
