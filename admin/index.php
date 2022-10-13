@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 <div class="auxLogin">
 	<div class="lateralIzquierdo">
-		<img src="img/logo-intecap.png">
+		<a href="../index.php"><img src="img/logo-intecap.png"></a>
 	</div>
 	<div class="lateralDerecho">
 		
@@ -78,9 +78,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	</div>
 
 </div>
-
-
-<h1>probando git y githun probando segunda vez</h1>
 </body>
 </html>
 

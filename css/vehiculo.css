@@ -12,7 +12,7 @@ body{
 	background-color: #f4f4f4;
 }
 .lateralIzquierdo{
-	width: 40%;
+	width: 60%;
 	background-color: #fff;/*color blanco*/
 	height: 100%;
 	float: left;
@@ -21,7 +21,7 @@ body{
 	align-items: center;/*centrar vertical*/
 }
 .lateralDerecho{
-	width: 60%;
+	width: 40%;
 	background-color: #0075bf;/*color personalizado */
 	height: 100%;
 	float: left;
@@ -165,4 +165,9 @@ tr:nth-child(even) {
 	}
 .imagenModal{
 	width: 40%;
+}
+
+
+.titulosVehiculo{
+	border:#5499C7 solid;
 }

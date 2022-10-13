@@ -27,7 +27,7 @@ if (!isset($_SESSION['usuarioValido'])) {
 -->
 
 
-  
+
 
 
 </head>
@@ -51,12 +51,12 @@ if (!isset($_SESSION['usuarioValido'])) {
 
       <div class="modalMensajes">
         <div class="modalTitulo">
-        <h3>Registro de vehiculos</h3>
-        <label for="" onclick="CerrarModal()">&times;</label>
-       
+          <h3>Registro de vehiculos</h3>
+          <label for="" onclick="CerrarModal()">&times;</label>
+
         </div>
-      
-        <form action="GuardarVehiculo.php" enctype="multipart/form-data" name="enviar" method="POST" >
+
+        <form action="GuardarVehiculo.php" enctype="multipart/form-data" name="enviar" method="POST">
           <div class="row g-3">
             <div class="col-md-4">
               <label for="state" class="form-label">Marca</label>
@@ -81,12 +81,12 @@ if (!isset($_SESSION['usuarioValido'])) {
             <div class="col-md-4">
               <label for="state" class="form-label">Tipo</label>
               <select class="form-select" name="tipo" id="tipo" required>
-              <?php
+                <?php
                 $sql = "SELECT * FROM tipo_vehiculo";
                 $resultado = mysqli_query($conexion, $sql);
                 while ($res = mysqli_fetch_assoc($resultado)) {
                 ?>
-                <option value="<?php echo $res['id_tipo'] ?>"><?php echo $res['tipo'] ?></option>
+                  <option value="<?php echo $res['id_tipo'] ?>"><?php echo $res['tipo'] ?></option>
                 <?php
                 }
                 ?>
@@ -96,12 +96,12 @@ if (!isset($_SESSION['usuarioValido'])) {
             <div class="col-md-4">
               <label for="state" class="form-label">Transmisión</label>
               <select class="form-select" name="transmision" id="transmision" required>
-              <?php
+                <?php
                 $sql = "SELECT * FROM transmision";
                 $resultado = mysqli_query($conexion, $sql);
                 while ($res = mysqli_fetch_assoc($resultado)) {
                 ?>
-                <option value="<?php echo $res['id_transmicion'] ?>"><?php echo $res['transmision'] ?></option>
+                  <option value="<?php echo $res['id_transmicion'] ?>"><?php echo $res['transmision'] ?></option>
                 <?php
                 }
                 ?>
@@ -121,12 +121,12 @@ if (!isset($_SESSION['usuarioValido'])) {
             <div class="col-md-4">
               <label for="state" class="form-label">Tracción</label>
               <select class="form-select" name="traccion" id="traccion" required>
-              <?php
+                <?php
                 $sql = "SELECT * FROM traccion";
                 $resultado = mysqli_query($conexion, $sql);
                 while ($res = mysqli_fetch_assoc($resultado)) {
                 ?>
-                <option value="<?php echo $res['id_traccion'] ?>"><?php echo $res['traccion'] ?></option>
+                  <option value="<?php echo $res['id_traccion'] ?>"><?php echo $res['traccion'] ?></option>
                 <?php
                 }
                 ?>
@@ -136,12 +136,12 @@ if (!isset($_SESSION['usuarioValido'])) {
             <div class="col-md-4">
               <label for="state" class="form-label">Combustible</label>
               <select class="form-select" name="combustible" id="combustible" required>
-              <?php
+                <?php
                 $sql = "SELECT * FROM combustible";
                 $resultado = mysqli_query($conexion, $sql);
                 while ($res = mysqli_fetch_assoc($resultado)) {
                 ?>
-                <option value="<?php echo $res['id_combustible'] ?>"><?php echo $res['combustible'] ?></option>
+                  <option value="<?php echo $res['id_combustible'] ?>"><?php echo $res['combustible'] ?></option>
                 <?php
                 }
                 ?>
@@ -151,12 +151,12 @@ if (!isset($_SESSION['usuarioValido'])) {
             <div class="col-md-4">
               <label for="state" class="form-label">Color</label>
               <select class="form-select" name="color" id="color" required>
-              <?php
+                <?php
                 $sql = "SELECT * FROM colores";
                 $resultado = mysqli_query($conexion, $sql);
                 while ($res = mysqli_fetch_assoc($resultado)) {
                 ?>
-                <option value="<?php echo $res['id_color'] ?>"><?php echo $res['color'] ?></option>
+                  <option value="<?php echo $res['id_color'] ?>"><?php echo $res['color'] ?></option>
                 <?php
                 }
                 ?>
@@ -170,8 +170,8 @@ if (!isset($_SESSION['usuarioValido'])) {
 
             <div class="col-md-2">
               <label for="state" class="form-label">Años</label>
-              <select class="form-select" name="anios" onchange="CalcularMeses()"  id="anios">
-               <option value=""></option>
+              <select class="form-select" name="anios" onchange="CalcularMeses()" id="anios">
+                <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -201,7 +201,7 @@ if (!isset($_SESSION['usuarioValido'])) {
               <input type="text" name="aniosMinimoCredito" class="form-control" id="aniosMinimoCredito" readonly placeholder="Meses" required>
             </div>
 
-           
+
 
             <div class="col-md-3">
               <label for="firstName" class="form-label">Mensualidad</label>
@@ -217,12 +217,12 @@ if (!isset($_SESSION['usuarioValido'])) {
               <input type="number" name="cantidad_puertas" class="form-control" id="cantidad_puertas" placeholder="Cantidad Puertas" required>
             </div>
 
-            <div class="col-md-10">  
+            <div class="col-md-10">
               <strong><em id="interes"></em></strong>
               <strong><em id="interesVehiculo"></em></strong>
               <strong><em id="sumaTotal"></em></strong>
             </div>
-            
+
             <div class="col-md-8">
               <label for="firstName" class="form-label">Imagen</label>
               <input class="form-control" type="file" name="img[]" multiple="" id="formFile" required>
@@ -233,10 +233,10 @@ if (!isset($_SESSION['usuarioValido'])) {
               <button class="form-control" type="button" onclick="Calcular()"><img src="img/calculadora.png" alt=""></button>
             </div>
 
-           
+
             <div class="col-md-6">
-            <input type="submit" class="btn btn-primary" name="Guardar" value="Guardar">
-            <button class="btn btn-success" type="button" onclick="CerrarModal()">Salir</button>
+              <input type="submit" class="btn btn-primary" name="Guardar" value="Guardar">
+              <button class="btn btn-success" type="button" onclick="CerrarModal()">Salir</button>
             </div>
           </div>
         </form>
@@ -254,29 +254,29 @@ if (!isset($_SESSION['usuarioValido'])) {
   <h2>Bienvenido:
     <?php echo $_SESSION['nombreCompleto']; ?>
   </h2>
-<hr>
-<!------ datos de la tabla --------------->
+  <hr>
+  <!------ datos de la tabla --------------->
 
 
 
-<table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Marca</th>
-                <th>Linea</th>
-                <th>tipo_vehiculo</th>
-                <th>Modelo</th>
-                <th>Transmisión</th>
-                <th>Combustible</th>
-                <th>Color</th>
-                <th>Cant. Puertas</th>
-                <th>Opciones</th>
-            </tr>
-           
-        </thead>
-        <tbody>
-        <?php
-          $sql = "SELECT v.correlativo as correlativo, m.marca as marca, v.linea as linea, tp.tipo as tipo, v.modelo as modelo, t.transmision as transmision, com.combustible as combustible, c.color as color, v.cantidad_puertas as  	cantidad_puertas
+  <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th>Marca</th>
+        <th>Linea</th>
+        <th>tipo_vehiculo</th>
+        <th>Modelo</th>
+        <th>Transmisión</th>
+        <th>Combustible</th>
+        <th>Color</th>
+        <th>Cant. Puertas</th>
+        <th>Opciones</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <?php
+      $sql = "SELECT v.correlativo as correlativo, m.marca as marca, v.linea as linea, tp.tipo as tipo, v.modelo as modelo, t.transmision as transmision, com.combustible as combustible, c.color as color, v.cantidad_puertas as  	cantidad_puertas
           FROM vehiculos AS v, marcas AS m, tipo_vehiculo AS tp, transmision AS t, combustible AS com, colores AS c
           WHERE
           v.marca = m.id_marcar AND
@@ -284,35 +284,35 @@ if (!isset($_SESSION['usuarioValido'])) {
           v.transmision = t.id_transmicion AND
           v.combustible = com.id_combustible AND
           v.color = c.id_color";
-          $resultado = mysqli_query($conexion, $sql);
-          while($res = mysqli_fetch_array($resultado)){
-          ?>
-            <tr>
-                <td><?php echo $res['marca']; ?></td>
-                <td><?php echo $res['linea']; ?></td>
-                <td><?php echo $res['tipo']; ?></td>
-                <td><?php echo $res['modelo']; ?></td>
-                <td><?php echo $res['transmision']; ?></td>
-                <td><?php echo $res['combustible']; ?></td>
-                <td><?php echo $res['color']; ?></td>
-                <td><?php echo $res['cantidad_puertas']; ?></td>
-                <th>&nbsp;&nbsp;<a href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href='frmActualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png"></a>
-            </tr> 
-            <?php
-          }
-          ?>  
-        </tfoot>
-    </table>
-    <hr>
-    <footer class="bg-light text-center text-lg-start">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: #2980b9;">
-    © 2020 Copyright:
-    <a class="text-dark" href="#">Jeremías Iván Chiricoc Martínez</a>
-  </div>
-  <!-- Copyright -->
-</footer>
+      $resultado = mysqli_query($conexion, $sql);
+      while ($res = mysqli_fetch_array($resultado)) {
+      ?>
+        <tr>
+          <td><?php echo $res['marca']; ?></td>
+          <td><?php echo $res['linea']; ?></td>
+          <td><?php echo $res['tipo']; ?></td>
+          <td><?php echo $res['modelo']; ?></td>
+          <td><?php echo $res['transmision']; ?></td>
+          <td><?php echo $res['combustible']; ?></td>
+          <td><?php echo $res['color']; ?></td>
+          <td><?php echo $res['cantidad_puertas']; ?></td>
+          <th>&nbsp;&nbsp;<a href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href='frmActualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png"></a>
+        </tr>
+      <?php
+      }
+      ?>
+      </tfoot>
+  </table>
+  <hr>
+  <footer class="bg-light text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: #2980b9;">
+      © 2020 Copyright:
+      <a class="text-dark" href="#">Jeremías Iván Chiricoc Martínez</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
 
 
 
@@ -321,24 +321,24 @@ if (!isset($_SESSION['usuarioValido'])) {
   <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/dataTables.bootstrap5.min.js"></script>
 
- <!--
+  <!--
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
   -->
   <script type="text/javascript">
-    function elminarVehiculo(){
+    function elminarVehiculo() {
       var respuesta = confirm("Estas seguro que deseas eliminar el vehiculo");
-      if(respuesta == true){
+      if (respuesta == true) {
         return true;
-      }else{
+      } else {
         return false;
       }
     }
-              
-    $(document).ready(function () {
-    $('#example').DataTable();
-});
+
+    $(document).ready(function() {
+      $('#example').DataTable();
+    });
   </script>
 </body>
 
