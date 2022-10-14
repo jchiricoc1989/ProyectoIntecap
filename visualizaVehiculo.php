@@ -8,19 +8,18 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
     <title>Vehiculos</title>
-
     <link rel="stylesheet" type="text/css" href="css/vehiculo.css">
     <link href="admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="admin/css/carousel.css" rel="stylesheet">
 
 
 </head>
-
 <body>
     <div class="row">
         <div class="encabezado">
             <img class="icoPrincipal centerI" src="img/logo-intecap.png">
-            <h2 class="textoPrincipal">Información del vehiculo</h2>
+            <h1 class="textoPrincipal">Información del vehiculo</h1>
+            <a href="index.php"><img src="admin/img/atras.png" alt=""></a>
         </div>
     </div>
     <div class="row">

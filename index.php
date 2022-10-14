@@ -4,7 +4,6 @@ include 'admin/php/Conexion.php';
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Galería vehiculos</title>
   <link rel="stylesheet" type="text/css" href="css/vehiculo.css">
@@ -36,27 +35,20 @@ include 'admin/php/Conexion.php';
             $modelo = $res['modelo'];
             $marca = $res['marca'];
           ?>
-            <div class="col">
-              <div class="card shadow-sm">
-                <img src="admin/<?php echo $ubicacion ?>" width="300" height="300">
-                <strong style="font-size:25px;"><?php echo $marca ?></strong>
-                <strong style="font-size:25px;"><?php echo $linea ?></strong>
-                <strong style="font-size:25px;"><?php echo $modelo ?></strong>
-
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a class="btn btn-sm btn-outline-secondary" href="visualizaVehiculo.php?correlativo=<?php echo $id_vehiculo ?>"><i class="fa-solid fa-circle-info"></i></a>
-                    </div>
-                  </div>
-                </div>
+          <div class="card" style="width: 18rem;">
+            <img src="admin/<?php echo $ubicacion ?>" class="card-img-top" alt="...">
+             <div class="card-body">
+                <h5 class="card-title"><?php echo $marca ?></h5>
+                <h5 class="card-title"><?php echo $linea ?></h5>
+                <h5 class="card-title"><?php echo $modelo ?></h5>
+                <a href="visualizaVehiculo.php?correlativo=<?php echo $id_vehiculo ?>">
+               <img src="admin/img/info1.png" alt="">
+                </a>
               </div>
             </div>
-
           <?php
           }
           ?>
-
         </div>
       </div>
     </div>
