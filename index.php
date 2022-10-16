@@ -15,7 +15,9 @@ include 'admin/php/Conexion.php';
 <body>
   <div class="encabezado">
     <img class="icoPrincipal centerI" src="img/logo-intecap.png">
-    <h2 class="textoPrincipal">Predio Chapín</h2>
+   
+    <h2 class="textoPrincipal">Predio Chapín</h2> 
+    <a href="Manual_de_usuario.pdf" title="Descargar Manual de Usuario" download="Manual de Usuario"><img src="admin/img/pdf.png" alt=""></a>
     <a href="admin/index.php" title="Configuraciones"><img src="admin/img/config.png" alt=""></a>
   </div>
 
