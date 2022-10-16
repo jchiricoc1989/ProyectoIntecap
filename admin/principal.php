@@ -7,13 +7,11 @@ if (!isset($_SESSION['usuarioValido'])) {
   die();
 } else {
 }
-
 ?>
 
 
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Galería vehiculos</title>
   <link rel="stylesheet" type="text/css" href="css/vehiculo.css">
@@ -21,26 +19,13 @@ if (!isset($_SESSION['usuarioValido'])) {
   <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrapa.min.css">
 
-  <!--
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
--->
-
-
-
-
-
 </head>
 
 <body>
-
-
   <div class="encabezado">
     <img class="icoPrincipal" src="img/logo-intecap.png">
-
     <h2 class="textoPrincipal">Galería de vehiculos</h2>
-
-    <a href="#" onclick="mostrarModal()">
+    <a href="#" onclick="mostrarModal()" title="Agregar Vehiculo">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 btnMenu">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
@@ -48,12 +33,10 @@ if (!isset($_SESSION['usuarioValido'])) {
 
     <div class="fondoModal" id="modal1">
       <!-- class="fondo" esta relacionado al css, id="modal1" esta relacionado a javascript  -->
-
       <div class="modalMensajes">
         <div class="modalTitulo">
           <h3>Registro de vehiculos</h3>
           <label for="" onclick="CerrarModal()">&times;</label>
-
         </div>
 
         <form action="GuardarVehiculo.php" enctype="multipart/form-data" name="enviar" method="POST">
@@ -201,15 +184,13 @@ if (!isset($_SESSION['usuarioValido'])) {
               <input type="text" name="aniosMinimoCredito" class="form-control" id="aniosMinimoCredito" readonly placeholder="Meses" required>
             </div>
 
-
-
             <div class="col-md-3">
               <label for="firstName" class="form-label">Mensualidad</label>
               <input type="text" name="mensualidadAprox" class="form-control" id="mensualidadAprox" readonly placeholder="Mensualidad" required>
             </div>
             <div class="col-md-2">
               <label for="firstName" class="form-label">Calcular</label>
-              <img onclick="Calcular()" src="img/calculadora.png" alt="">
+              <img onclick="Calcular()" src="img/calculadora.png" alt="" title="Calcular">
             </div>
 
             <div class="col-md-2">
@@ -227,16 +208,9 @@ if (!isset($_SESSION['usuarioValido'])) {
               <label for="firstName" class="form-label">Imagen</label>
               <input class="form-control" type="file" name="img[]" multiple="" id="formFile" required>
             </div>
-
-            <div class="col-md-2">
-              <label for="firstName" class="form-label">Calcular</label>
-              <button class="form-control" type="button" onclick="Calcular()"><img src="img/calculadora.png" alt=""></button>
-            </div>
-
-
             <div class="col-md-6">
-              <input type="submit" class="btn btn-primary" name="Guardar" value="Guardar">
-              <button class="btn btn-success" type="button" onclick="CerrarModal()">Salir</button>
+              <input type="submit" class="btn btn-primary" name="Guardar" title="Insertar Vehiculo" value="Guardar">
+              <button class="btn btn-success" type="button" onclick="CerrarModal()" title="Cerrar Ventana">Salir</button>
             </div>
           </div>
         </form>
@@ -244,7 +218,7 @@ if (!isset($_SESSION['usuarioValido'])) {
     </div>
 
 
-    <a href="CerrarSesion.php">
+    <a href="CerrarSesion.php" title="Cerrar Sesión">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 btnMenu">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
       </svg>
@@ -296,8 +270,8 @@ if (!isset($_SESSION['usuarioValido'])) {
           <td><?php echo $res['combustible']; ?></td>
           <td><?php echo $res['color']; ?></td>
           <td><?php echo $res['cantidad_puertas']; ?></td>
-          <th>&nbsp;&nbsp;<a href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href='frmActualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png"></a>
+          <th>&nbsp;&nbsp;<a title="Eliminar Vehiculo" href='eliminarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/eliminar.png" onclick="return elminarVehiculo()"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a title="Actualizar Vehiculo" href='frmActualizarVehiculo.php?correlativo=<?php echo $res['correlativo']; ?>'><img src="img/actualizar.png"></a>
         </tr>
       <?php
       }
@@ -305,14 +279,9 @@ if (!isset($_SESSION['usuarioValido'])) {
       </tfoot>
   </table>
   <hr>
-  <footer class="bg-light text-center text-lg-start">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: #2980b9;">
-      © 2020 Copyright:
-      <a class="text-dark" href="#">Jeremías Iván Chiricoc Martínez</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
+  <?php
+  require "../footer.php";
+  ?>
 
 
 

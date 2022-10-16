@@ -14,13 +14,8 @@
 
 
 </head>
+
 <body>
-    <div class="row">
-        <div class="encabezado">
-            <img class="icoPrincipal centerI" src="img/logo-intecap.png">
-            <h1 class="textoPrincipal">Información del vehiculo</h1>
-            <a href="index.php"><img src="admin/img/atras.png" alt=""></a>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-8">
@@ -62,15 +57,15 @@
         <div class="col-md-4">
             <?php
             $sql = "SELECT v.*, m.*,tv.*,trans.*, t.*, comb.*,c.*
-    FROM vehiculos AS v, marcas as m, tipo_vehiculo AS tv, transmision AS trans, traccion AS t, combustible as comb, colores AS c
-    WHERE
-    v.marca = m.id_marcar AND
-    v.tipo = tv.id_tipo AND
-    v.transmision = trans.id_transmicion AND
-    v.traccion = t.id_traccion AND
-    v.combustible = comb.id_combustible AND
-    v.color = c.id_color AND
-    v.correlativo = $id_vehiculo";
+            FROM vehiculos AS v, marcas as m, tipo_vehiculo AS tv, transmision AS trans, traccion AS t, combustible as comb, colores AS c
+            WHERE
+            v.marca = m.id_marcar AND
+            v.tipo = tv.id_tipo AND
+            v.transmision = trans.id_transmicion AND
+            v.traccion = t.id_traccion AND
+            v.combustible = comb.id_combustible AND
+            v.color = c.id_color AND
+            v.correlativo = $id_vehiculo";
             $respuesta = mysqli_query($conexion, $sql);
 
             while ($res = mysqli_fetch_assoc($respuesta)) {
@@ -96,13 +91,51 @@
                 <strong class="badge bg-success text-wrap" style="width: 8rem; height: 2rem; font-size: 17px;">Tracción: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="badge bg-primary text-wrap" style="width: 8rem; height: 2rem; font-size: 17px;"><?php echo $traccion ?></strong><br><br>
                 <strong class="badge bg-success text-wrap" style="width: 8rem; height: 2rem; font-size: 17px;">Combustible: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="badge bg-primary text-wrap" style="width: 8rem; height: 2rem; font-size: 17px;"><?php echo $transmicion ?></strong><br><br>
                 <strong class="badge bg-success text-wrap" style="width: 8rem; height: 2rem; font-size: 17px;">Precio: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="badge bg-primary text-wrap" style="width: 8rem; height: 2rem; font-size: 17px;"><?php echo $precio ?></strong>
-
             <?php
             }
             ?>
+            
+        </div>
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+        <a href="index.php" class="btn btn-warning" title="Atras">Atras</a>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <hr>
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <?php
+                        //$correlativo = $_GET['correlativo'];
+                        $imagen = "SELECT * FROM fotos_autos WHERE id_vehiculo = $id_vehiculo";
+                        $resultado = mysqli_query($conexion, $imagen);
+
+                        while ($res = mysqli_fetch_assoc($resultado)) {
+                            $idImage = $res['correlativo'];
+                            $idVehiculo = $res['id_vehiculo'];
+                            $ubicacion = $res['ubicacion'];
+                        ?>
+                            &nbsp;&nbsp;&nbsp; <div class="card" style="width: 12rem;">
+                                &nbsp; <img src="admin/<?php echo $ubicacion ?>" class="card-img-top" alt="...">
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <?php 
+    require "footer.php";
+    ?>
+
 
     <script src="admin/js/bootstrap.bundle.min.js"></script>
 </body>
