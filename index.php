@@ -11,7 +11,7 @@ include 'admin/php/Conexion.php';
   <link rel="stylesheet" type="text/css" href="admin/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="admin/css/all.min.css">
 </head>
-
+<!--- hola mundo-->
 <body>
   <div class="encabezado">
     <img class="icoPrincipal centerI" src="img/logo-intecap.png">
